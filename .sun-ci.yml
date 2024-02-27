@@ -7,7 +7,7 @@ stages:
 jobs:
   - name: Ktlint checking
     stage: ktlint
-    image: androidsdk/android-30:latest
+    image: amazoncorretto:17
     cache:
       - key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
         paths:
@@ -41,7 +41,7 @@ jobs:
 
   - name: Detekt checking
     stage: detekt
-    image: androidsdk/android-30:latest
+    image: amazoncorretto:17
     script:
        - ./gradlew detekt --daemon
        - status2=$?
